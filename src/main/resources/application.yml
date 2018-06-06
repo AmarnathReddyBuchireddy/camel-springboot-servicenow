@@ -1,0 +1,29 @@
+# Servlet Container & Health Setup
+server:
+  address: 0.0.0.0
+management:
+  address: 0.0.0.0
+  port: 8081
+endpoints:
+  enabled: false
+  health:
+    enabled: true
+    
+# Spring Boot
+spring:
+
+# Camel Spring Boot
+camel:
+  component:
+    servicenow:
+      instance-name: dev43489
+      user-name: admin
+      password: Abcd1234
+  springboot:
+    name: camel-springboot-servicenow
+
+# Logging
+logging:
+  config: classpath:logback.xml
+  level:
+    #org.apache.camel: DEBUG
