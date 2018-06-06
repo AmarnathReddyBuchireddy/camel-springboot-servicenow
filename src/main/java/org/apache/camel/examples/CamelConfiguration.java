@@ -36,7 +36,7 @@ public class CamelConfiguration extends RouteBuilder {
     
     from("direct:post")
       .routeId("handlePostIncidents")
-      .transform().groovy("return new org.apache.camel.servicenow.dto.Incident(shortDescription: request.body['description'], urgency: request.body['level'], assignmentGroup: '287ebd7da9fe198100f92cc8d1d2154e', impact: 2);")
+      .transform().groovy("resource:classpath:/groovy/RestToIncident.groovy")
       .setHeader(ServiceNowConstants.RESOURCE).constant(ServiceNowConstants.RESOURCE_TABLE)
       .setHeader(ServiceNowConstants.ACTION).constant(ServiceNowConstants.ACTION_CREATE)
       .setHeader(ServiceNowConstants.REQUEST_MODEL).constant(Incident.class)
